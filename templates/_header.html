@@ -1,0 +1,59 @@
+{% load static %}
+
+<header>
+    <div class="container-fluid" style="background: #DBE2EF;">
+        <nav class="navbar navbar-expand-md sticky-top navbar-light" style="background: #DBE2EF;">
+            <div class="container-fluid"><a class="navbar-brand" href="/" style="margin-right: -354px;"><img
+                    class="w-25 fit-cover" src="{% static 'img/bird.svg' %}"></a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span
+                        class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-2" style="color: var(--bs-body-bg);">
+                    <div class="dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
+                                             data-bs-toggle="dropdown" href="#" style="color: #112D4E;">Dropdown </a>
+                        <div class="dropdown-menu" style="color: #112D4E;"><a class="dropdown-item" href="#"
+                                                                              style="color: #112D4E;">First Item</a><a
+                                class="dropdown-item" href="#" style="color: #112D4E;">Second Item</a><a
+                                class="dropdown-item" href="#" style="color: #112D4E;">Third Item</a></div>
+                    </div>
+                    <ul class="navbar-nav" style="color: #112D4E;">
+                        <li class="nav-item" style="color: #112D4E;"><a class="nav-link active" href="#"
+                                                                        style="color: #112D4E;">First Item</a></li>
+                        <li class="nav-item" style="color: #112D4E;"><a class="nav-link" href="#"
+                                                                        style="color: #112D4E;">Second Item</a></li>
+                        <li class="nav-item" style="color: #112D4E;"><a class="nav-link" href="#"
+                                                                        style="color: #112D4E;">Third Item</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                        <div class="col d-flex d-sm-flex d-md-flex d-xl-flex justify-content-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-xl-end align-items-xl-center"
+                             style="margin: 10px;margin-right: 14px;"><i class="far fa-user d-flex align-items-center"
+                                                                         style="font-size: 34px;margin-right: 3px;padding: 5px;padding-top: 5px;color: var(--bs-tertiary-color);background: var(--bs-secondary-bg);border-radius: 50%;"></i>
+                            <p style="margin-top: 11px;font-weight: bold;" class="text-black">{{ user.username }}</p>
+                            
+                            <a class="btn btn-primary" type="button" style="margin-left: 20px;"
+                               href="{% url 'user:logout' %}">Sign Out</a>
+                        </div>
+                    {% else %}
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active text-decoration-underline"
+                                                    href="{% url 'user:login' %}">
+                                Login
+                            </a></li>
+
+                            <li class="nav-item"><a
+                                    class="nav-link text-decoration-underline"
+                                    href="{% url 'user:sign-up' %}">
+                                Sign Up
+                            </a></li>
+
+                        </ul>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+
+
+    </div>
+</header>
+<script src="{% static "js/bootstrap.min.js" %}"></script>

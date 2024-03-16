@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+    Sign up form
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6 col-xl-4 p-5 mx-auto" >
+        <form method="post" class="mx-auto">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field|add_class:"form-control" }}
+
+                    {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
