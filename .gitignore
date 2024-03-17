@@ -4,3 +4,4 @@ db.sqlite3
 # If you are using PyCharm, you might want to add .idea to the .gitignore file
 .idea
 
+/**/**/img/*

@@ -16,6 +16,16 @@ class Product(models.Model):
         return self.name
 
 
+class Book(Product):
+    author = models.CharField(max_length=255)
+    pages = models.IntegerField()
+    publisher = models.CharField(max_length=255)
+    published_at = models.DateField()
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
