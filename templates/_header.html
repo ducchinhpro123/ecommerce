@@ -10,21 +10,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navcol-2" style="color: var(--bs-body-bg);">
                     <div class="dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
-                                             data-bs-toggle="dropdown" href="#" style="color: #112D4E;">Dropdown </a>
-                        <div class="dropdown-menu" style="color: #112D4E;"><a class="dropdown-item" href="#"
-                                                                              style="color: #112D4E;">First Item</a><a
+                                             data-bs-toggle="dropdown" href="#" style="color: #112D4E;">Book </a>
+                        <div class="dropdown-menu" style="color: #112D4E;">
+                            <a class="dropdown-item" href="{% url 'product:create-product' product_type='book'  %}"
+                               style="color: #112D4E;">Sell Book</a><a
                                 class="dropdown-item" href="#" style="color: #112D4E;">Second Item</a><a
                                 class="dropdown-item" href="#" style="color: #112D4E;">Third Item</a></div>
                     </div>
                     <ul class="navbar-nav" style="color: #112D4E;">
                         <li class="nav-item" style="color: #112D4E;"><a class="nav-link active"
-                                                                        href="{% url 'product:create-product' %}"
+                                                                        href="{% url 'product:create-product' product_type='product' %}"
                                                                         style="color: #112D4E;">Create Product</a></li>
                         <li class="nav-item" style="color: #112D4E;"><a class="nav-link"
                                                                         href="{% url 'seller:register-seller' %}"
                                                                         style="color: #112D4E;">Become a Seller</a></li>
-                        <li class="nav-item" style="color: #112D4E;"><a class="nav-link" href="#"
-                                                                        style="color: #112D4E;">Third Item</a></li>
+                        <li class="nav-item" style="color: #112D4E;"><a class="nav-link"
+                                                                        href="{% url 'product:your-products' %}"
+                                                                        style="color: #112D4E;">Your Products</a></li>
                     </ul>
                     {% if user.is_authenticated %}
                         <div class="col d-flex d-sm-flex d-md-flex d-xl-flex justify-content-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-xl-end align-items-xl-center"

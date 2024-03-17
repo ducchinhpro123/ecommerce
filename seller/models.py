@@ -9,7 +9,6 @@ class Seller(models.Model):
     address = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    products = models.ManyToManyField('product.Product', blank=True)
     banner = models.ImageField(upload_to='seller/banner', blank=True, null=True)
     store_name = models.CharField(max_length=255, default='')
     store_description = models.TextField(default='')
@@ -17,5 +16,3 @@ class Seller(models.Model):
     def __str__(self):
         return self.store_name
 
-    def get_products(self):
-        return self.products.all()

@@ -1,0 +1,67 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    List Product of {{ user.username }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-xl-flex d-xxl-flex justify-content-xl-center justify-content-xxl-center align-items-xxl-center">
+            {% for product in products %}
+
+                <div class="col-6 col-lg-3 col-xl-2 col-xxl-2 text-center">
+                    {% if product.book %}
+
+                        <a href="{% url 'product:edit-product' product_type='book' pk=product.id %}">
+
+                            <picture><img class="w-100 fit-cover" src="{{ product.image.url }}"
+                                          style="width: 200px;" alt="{{ product.name }}"/>
+                            </picture>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'product:edit-product' product_type='other' pk=product.id %}">
+                            <picture><img class="w-100 fit-cover" src="{{ product.image.url }}"
+                                          style="width: 200px;" alt="{{ product.name }}"/>
+                            </picture>
+                        </a>
+                    {% endif %}
+
+                    <div>
+                        <p class="text-start"><span style="color: rgb(0, 0, 0);">
+                            {{ product.name }}
+                        </span>
+                        </p>
+                    </div>
+                    <div class="text-start">
+
+                        <span>by </span>
+                        <span>
+                                {% if product.book %}
+                                    <a style="color: #4900c8">{{ product.book.author }}</a>
+                                {% endif %}
+                            </span>
+
+                    </div>
+                    <div class="d-flex d-xl-flex align-items-center align-items-xl-center"><span
+                            style="margin-right: 10px;"><i class="fas fa-star" style="color: var(--bs-yellow);"></i><i
+                            class="fas fa-star" style="color: var(--bs-yellow);"></i><i class="fas fa-star"
+                                                                                        style="color: var(--bs-yellow);"></i><i
+                            class="fas fa-star" style="color: var(--bs-yellow);"></i><i class="fas fa-star"
+                                                                                        style="color: var(--bs-tertiary-color);"></i></span><i
+                            class="fas fa-angle-down" style="color: var(--bs-tertiary-color);"></i><span
+                            style="color: var(--bs-link-hover-color);">790</span></div>
+                    {% with product.price|floatformat:2 as formatted_price %}
+                        <p class="text-start">
+                            <span style="margin-right: 10px;font-size: 32px;">${{ formatted_price|slice:":-3" }}<sup>{{ formatted_price|slice:"-2:" }}</sup></span><span
+                                style="text-decoration: line-through;">$41.99</span>
+                        </p>
+                    {% endwith %}
+
+                </div>
+                <a href="{% url 'product:delete-product' pk=product.id %}" class="text-danger">Detete</a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

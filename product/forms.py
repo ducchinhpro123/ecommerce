@@ -6,7 +6,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        exclude = ['created_at', 'updated_at']
+        exclude = ['created_at', 'updated_at', 'seller']
 
 
 class CategoryForm(forms.ModelForm):
@@ -27,4 +27,4 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
-        exclude = ['created_at', 'updated_at']
+        exclude = ['created_at', 'updated_at', 'seller']
